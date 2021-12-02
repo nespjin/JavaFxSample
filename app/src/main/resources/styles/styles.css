@@ -1,0 +1,22 @@
+.root {
+    -app-primary-color: #007AFF;
+}
+
+.button {
+    -fx-border-width: 0;
+    -fx-border-insets: 0;
+    -fx-border-image-insets: 0;
+    -fx-background-color: #007AFF;
+    -fx-pref-width: 200;
+    -fx-pref-height: 30;
+    -fx-background-radius: 5;
+    -fx-text-fill: white;
+}
+
+.button:hover {
+    -fx-opacity: 0.9;
+}
+
+.button:pressed {
+    -fx-opacity: 0.8;
+}

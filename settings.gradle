@@ -1,0 +1,23 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        maven {
+            url '../local-plugin-repository'
+        }
+    }
+}
+
+include ':app'
+include ':nesp-sdk-java'
+include ':nesp-sdk-kotlin'
+include ':nesp-sdk-javafx'
+
+def currentPath = rootProject.projectDir
+project(':app').projectDir = new File("${currentPath}\\app")
+project(':nesp-sdk-java').projectDir =
+        new File("${currentPath}\\nesp-sdk-javafx\\nesp-sdk-java\\nesp-sdk-java")
+project(':nesp-sdk-kotlin').projectDir =
+        new File("${currentPath}\\nesp-sdk-javafx\\nesp-sdk-kotlin\\nesp-sdk-kotlin")
+project(':nesp-sdk-javafx').projectDir = new File("${currentPath}\\nesp-sdk-javafx")
+
+rootProject.name = 'JavaFxSample'

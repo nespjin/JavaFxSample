@@ -1,0 +1,138 @@
+/*
+ *
+ *   Copyright (c) 2021  NESP Technology Corporation. All rights reserved.
+ *
+ *   This program is not free software; you can't redistribute it and/or modify it
+ *   without the permit of team manager.
+ *
+ *   Unless required by applicable law or agreed to in writing.
+ *
+ *   If you have any questions or if you find a bug,
+ *   please contact the author by email or ask for Issues.
+ *
+ *   Author:JinZhaolu <1756404649@qq.com>
+ */
+
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.nesp.javafx' version "1.1"
+    id 'org.openjfx.javafxplugin'
+}
+
+apply plugin: 'kotlin'
+apply from: 'config.gradle'
+
+group 'com.nesp.javafx.sample'
+version project.versionName
+
+nespJfx {
+    defaultConfig {
+        versionCode = project.versionCode
+        versionName = project.versionName
+        debug = project.debug
+    }
+
+   /*
+   // 不推荐使用该方式，推荐使用 viewBinding
+    baseControllerOptions {
+        // 是否生成 BaseController
+        enable = true
+        // 配置BaseController的父类
+        superClass = "com.nesp.sdk.javafx.ControllerContext"
+        // 配置BaseController的接口，可配置多个接口
+        interfaces = ["javafx.fxml.Initializable"]
+    }*/
+
+    viewBinding = true
+}
+
+mainClassName = "com.nesp.javafx.sample.App"
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "17"
+}
+
+sourceCompatibility = "17"
+targetCompatibility = "17"
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+processResources {
+    from('src/main/resources') {
+        include '**/**'
+        duplicatesStrategy DuplicatesStrategy.INCLUDE
+    }
+}
+
+distTar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+distZip {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+jar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    archiveFileName = project.mainJar
+
+    configurations.implementation.setCanBeResolved(true)
+
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
+
+    // Filter dependencies
+/*    from sourceSets.main.output
+
+    dependsOn configurations.runtimeClasspath
+    from {
+        configurations.runtimeClasspath.findAll {
+            it.name.startsWith("kotlin-stdlib") && it.name.endsWith('jar')
+        }.collect { zipTree(it) }
+    }*/
+
+}
+test {
+    useJUnitPlatform()
+}
+
+
+ext {
+    jfxVersion = '17.0.1'
+}
+
+javafx {
+    version = jfxVersion
+    // Add JavaFx modules
+    modules = ['javafx.base', 'javafx.graphics', 'javafx.controls', 'javafx.fxml']
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', includes: ['*.jar'])
+
+    def junitVersion = '5.8.1'
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+
+    implementation project(':nesp-sdk-java')
+    implementation project(':nesp-sdk-kotlin')
+    implementation project(':nesp-sdk-javafx')
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.6.0'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.5.2-native-mt'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-javafx:1.5.2-native-mt'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2-native-mt'
+    implementation 'no.tornado:tornadofx:1.7.20'
+
+    implementation 'com.google.code.gson:gson:2.8.9'
+    implementation 'com.google.guava:guava:31.0.1-jre'
+
+    implementation 'com.alibaba:fastjson:1.2.78'
+    implementation 'org.json:json:20210307'
+
+}

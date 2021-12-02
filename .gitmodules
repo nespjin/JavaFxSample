@@ -1,0 +1,3 @@
+[submodule "nesp-sdk-javafx"]
+	path = nesp-sdk-javafx
+	url = git@github.com:nespjin/nesp-sdk-javafx.git

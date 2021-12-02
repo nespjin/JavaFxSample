@@ -1,0 +1,43 @@
+buildscript {
+    ext.kotlin_version = '1.6.0'
+    ext.ktx_core_version = '1.5.0-alpha02'
+
+    repositories {
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+        google()
+        maven { url 'https://maven.aliyun.com/nexus/content/repositories/jcenter' }
+        maven { url "https://jitpack.io" }
+        mavenCentral()
+
+    }
+
+    dependencies {
+        classpath 'com.guardsquare:proguard-gradle:7.1.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+
+}
+
+plugins {
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.10' apply false
+    id 'org.beryx.jlink' version '2.23.6'
+    id 'org.beryx.runtime' version '1.0.0' apply false
+    id "com.github.johnrengelman.shadow" version "4.0.3" apply false
+}
+
+allprojects {
+    repositories {
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+        google()
+        maven { url 'https://maven.aliyun.com/nexus/content/repositories/jcenter' }
+        maven { url "https://jitpack.io" }
+        mavenCentral()
+
+    }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
+}
+
