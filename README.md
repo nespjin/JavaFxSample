@@ -6,7 +6,7 @@ JavaFx示例项目
 [nesp-sdk-javafx](https://github.com/nespjin/nesp-sdk-javafx)
 开发JavaFx应用
 
-<img src="/home/jinzhaolu/IdeaProjects/JavaFxSample/img/sample.gif" title="Sample"/>
+![Sample](./img/sample.gif)
 
 ## 打包
 
