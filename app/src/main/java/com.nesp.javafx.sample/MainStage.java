@@ -62,28 +62,32 @@ public class MainStage extends BaseStage {
             }
         };
 
-        mBinding.btn_click.setOnMouseClicked(event -> clickCount.set(clickCount.get() + 1));
-        mBinding.btn_click.textProperty().bind(buttonText);
+        try {
+            mBinding.btn_click.setOnMouseClicked(event -> clickCount.set(clickCount.get() + 1));
+            mBinding.btn_click.textProperty().bind(buttonText);
 
-        mBinding.btn_switch_lang.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(final MouseEvent event) {
-                if (Objects.equals(Locale.getDefault().getLanguage(), "zh")) {
-                    Locale.setDefault(Locale.ENGLISH);
-                    mBinding.btn_switch_lang.setText("中文");
-                } else {
-                    Locale.setDefault(Locale.SIMPLIFIED_CHINESE);
-                    mBinding.btn_switch_lang.setText("English");
+            mBinding.btn_switch_lang.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(final MouseEvent event) {
+                    if (Objects.equals(Locale.getDefault().getLanguage(), "zh")) {
+                        Locale.setDefault(Locale.ENGLISH);
+                        mBinding.btn_switch_lang.setText("中文");
+                    } else {
+                        Locale.setDefault(Locale.SIMPLIFIED_CHINESE);
+                        mBinding.btn_switch_lang.setText("English");
+                    }
+
+                    recreate();
                 }
+            });
 
-                recreate();
+            if (!Objects.equals(Locale.getDefault().getLanguage(), "zh")) {
+                mBinding.btn_switch_lang.setText("中文");
+            } else {
+                mBinding.btn_switch_lang.setText("English");
             }
-        });
-
-        if (!Objects.equals(Locale.getDefault().getLanguage(), "zh")) {
-            mBinding.btn_switch_lang.setText("中文");
-        } else {
-            mBinding.btn_switch_lang.setText("English");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

@@ -21,6 +21,7 @@ plugins {
 }
 
 apply plugin: 'kotlin'
+apply plugin: 'com.gluonhq.gluonfx-gradle-plugin'
 apply from: 'config.gradle'
 
 group 'com.nesp.javafx.sample'
@@ -50,11 +51,11 @@ nespJfx {
 mainClassName = "com.nesp.javafx.sample.App"
 
 compileKotlin {
-    kotlinOptions.jvmTarget = "17"
+    kotlinOptions.jvmTarget = "11"
 }
 
-sourceCompatibility = "17"
-targetCompatibility = "17"
+sourceCompatibility = "11"
+targetCompatibility = "11"
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
@@ -110,6 +111,49 @@ javafx {
     version = jfxVersion
     // Add JavaFx modules
     modules = ['javafx.base', 'javafx.graphics', 'javafx.controls', 'javafx.fxml']
+}
+
+gluonfx {
+    attachConfig {
+        version = "$jfxVersion"
+        configuration = "implementation"
+    }
+
+    bundlesList = []
+    resourcesList = ["src/main/resources"]
+    reflectionList = []
+    jniList = []
+
+    compilerArgs = []
+    runtimeArgs = []
+
+    javaStaticSdkVersion = "11"
+    javafxStaticSdkVersion = "$jfxVersion"
+//    graalvmHome "/home/jinzhaolu/graalvm-svm-linux-gluon-21.2.0-dev"
+
+    verbose = false
+    enableSwRendering = false
+
+    remoteHostName = ""
+    remoteDir = ""
+
+    release {
+        // Android
+        appLabel = ""
+        versionCode = "1"
+        versionName = "1.0"
+        providedKeyStorePath = ""
+        providedKeyStorePassword = ""
+        providedKeyAlias = ""
+        providedKeyAliasPassword = ""
+        // iOS
+        bundleName = ""
+        bundleVersion = ""
+        bundleShortVersion = ""
+        providedSigningIdentity = ""
+        providedProvisioningProfile = ""
+        skipSigning = false
+    }
 }
 
 dependencies {

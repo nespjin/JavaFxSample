@@ -7,7 +7,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane stylesheets="@/styles/styles.css" prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/17"
+             xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox alignment="CENTER" layoutX="270.28570556640625" layoutY="186.2857208251953" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -19,8 +21,8 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="btn_click" mnemonicParsing="false" stylesheets="@../styles/styles.css" text="Button" />
-            <Button fx:id="btn_switch_lang" layoutX="210.0" layoutY="217.0" mnemonicParsing="false" stylesheets="@../styles/styles.css" text="English">
+            <Button fx:id="btn_click" mnemonicParsing="false" text="Button" />
+            <Button fx:id="btn_switch_lang" layoutX="210.0" layoutY="217.0" mnemonicParsing="false" text="English">
                <VBox.margin>
                   <Insets top="30.0" />
                </VBox.margin>

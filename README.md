@@ -102,3 +102,7 @@ public class MainStage extends BaseStage {
 
 1. 使用[jlink](https://docs.oracle.com/en/java/javase/17/docs/specs/man/jlink.html) 生成自定义JRE
 2. 使用[jpackage](https://docs.oracle.com/en/java/javase/17/docs/specs/man/jpackage.html) 打包成安装包
+
+
+## 优化
+使用[gluonfx-gradle-plugin](https://github.com/gluonhq/gluonfx-gradle-plugin) 与 [GraalVM](https://github.com/gluonhq/graal/), 编译成Native程序包
