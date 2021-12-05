@@ -124,7 +124,7 @@ gluonfx {
     reflectionList = []
     jniList = []
 
-    compilerArgs = []
+    compilerArgs = ["--no-fallback54q"]
     runtimeArgs = []
 
     javaStaticSdkVersion = "11"
