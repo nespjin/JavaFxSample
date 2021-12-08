@@ -16,7 +16,7 @@
 plugins {
     id 'java'
     id 'application'
-    id 'com.nesp.javafx' version "1.1"
+    id 'io.github.nespjin.javafx' version "1.1"
     id 'org.openjfx.javafxplugin'
 }
 
