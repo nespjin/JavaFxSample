@@ -104,7 +104,7 @@ test {
 
 
 ext {
-    jfxVersion = '17.0.1'
+    jfxVersion = '18.0.1'
 }
 
 javafx {
@@ -159,24 +159,24 @@ gluonfx {
 dependencies {
     implementation fileTree(dir: 'libs', includes: ['*.jar'])
 
-    def junitVersion = '5.8.1'
+    def junitVersion = '5.8.2'
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 
     implementation project(':nesp-sdk-java')
     implementation project(':nesp-sdk-kotlin')
     implementation project(':nesp-sdk-javafx')
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.6.0'
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.0'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.5.2-native-mt'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-javafx:1.5.2-native-mt'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2-native-mt'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib:1.6.21'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.6.21'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.6.1-native-mt'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-javafx:1.6.1-native-mt'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1-native-mt'
     implementation 'no.tornado:tornadofx:1.7.20'
 
-    implementation 'com.google.code.gson:gson:2.8.9'
-    implementation 'com.google.guava:guava:31.0.1-jre'
+    implementation 'com.google.code.gson:gson:2.9.0'
+    implementation 'com.google.guava:guava:31.1-jre'
 
-    implementation 'com.alibaba:fastjson:1.2.78'
-    implementation 'org.json:json:20210307'
+    implementation 'com.alibaba:fastjson:2.0.3'
+    implementation 'org.json:json:20220320'
 
 }

@@ -12,7 +12,6 @@
  *
  *   Author:JinZhaolu <1756404649@qq.com>
  */
-
 import org.gradle.internal.os.OperatingSystem
 
 project.ext {
@@ -22,7 +21,19 @@ project.ext {
     debug = false
 
     mainJar = 'app.jar'
-    jfxModsPath = OperatingSystem.current().isWindows() ?
-            'C:\\Users\\Lenovo\\openjfx\\javafx-jmods-17.0.1' :
-            '/home/jinzhaolu/openjfx/javafx-jmods-17.0.1'
+    jfxModsPath = getJavaFxRuntimePath()
+
+}
+
+final static def getJavaFxRuntimePath() {
+    def os = 'win'
+    def arch = 'x64'
+    if (OperatingSystem.current().isWindows()) {
+        os = 'win'
+    } else if (OperatingSystem.current().isLinux()) {
+        os = 'linux'
+    } else if (OperatingSystem.current().isMacOsX()) {
+        os = 'macos'
+    }
+    return (String) "../jmods/$os-$arch"
 }

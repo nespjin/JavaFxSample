@@ -7,12 +7,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane stylesheets="@/styles/styles.css" prefHeight="400.0" prefWidth="600.0"
-            xmlns="http://javafx.com/javafx/17"
-             xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@/styles/styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox alignment="CENTER" layoutX="270.28570556640625" layoutY="186.2857208251953" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
+            <Label fx:id="lb_runtime_info" />
             <Label text="%app.name">
                <VBox.margin>
                   <Insets bottom="20.0" />

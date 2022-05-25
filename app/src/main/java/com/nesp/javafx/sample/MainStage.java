@@ -52,6 +52,13 @@ public class MainStage extends BaseStage {
         final String title = getResource().getString(R.string.app_name);
         setTitle(title);
 
+
+        mBinding.lb_runtime_info.setText(
+                "Runtime: " + System.getProperty("java.runtime.name")
+                        + " "
+                        + "Version: " + System.getProperty("java.runtime.version")
+        );
+
         StringProperty buttonText = new SimpleStringProperty("Click Me");
 
         IntegerProperty clickCount = new SimpleIntegerProperty() {
